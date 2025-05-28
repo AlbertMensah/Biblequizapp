@@ -18,7 +18,7 @@ const currentScoreSpan = document.getElementById('current-score');
 const currentLivesSpan = document.getElementById('current-lives');
 const countdownTimerSpan = document.getElementById('countdown-timer');
 const questionText = document.getElementById('question-text');
-const optionsContainer = document.getElementById('options-container'); // Corrected ID usage in HTML
+const optionsContainer = document.getElementById('options-container');
 const motivationMessage = document.getElementById('motivation-message');
 const nextQuestionBtn = document.getElementById('next-question-btn');
 const completedLevelSpan = document.getElementById('completed-level');
@@ -68,8 +68,8 @@ function updateUI() {
         btn.classList.remove('correct', 'wrong'); // Clear feedback styles
         btn.disabled = false; // Enable buttons
     });
-    // Ensure timer color is reset when a new question loads
-    countdownTimerSpan.style.color = '#FFC107';
+    // Ensure timer animation class is removed
+    countdownTimerSpan.classList.remove('low-time');
 }
 
 function getQuestionsForLevel(level, difficulty) {
@@ -77,7 +77,8 @@ function getQuestionsForLevel(level, difficulty) {
     if (questionsByLevel[level] && questionsByLevel[level][difficulty]) {
         // Take QUESTIONS_PER_LEVEL questions for the current level.
         // If there are fewer than 10, take all available.
-        return questionsByLevel[level][difficulty].slice(0, QUESTIONS_PER_LEVEL);
+        // Shuffle the questions first to ensure random order each time
+        return shuffleArray([...questionsByLevel[level][difficulty]]).slice(0, QUESTIONS_PER_LEVEL);
     }
     console.warn(`No questions found for Level ${level} with difficulty ${difficulty}. This might lead to immediate game over/level complete.`);
     return [];
@@ -87,6 +88,7 @@ function getQuestionsForLevel(level, difficulty) {
 function startTimer() {
     let timeLeft = TIME_PER_QUESTION;
     countdownTimerSpan.textContent = timeLeft;
+    countdownTimerSpan.classList.remove('low-time'); // Reset animation class
 
     clearInterval(timer); // Clear any existing timer
     timer = setInterval(() => {
@@ -94,9 +96,9 @@ function startTimer() {
         countdownTimerSpan.textContent = timeLeft;
 
         if (timeLeft <= 5) {
-            countdownTimerSpan.style.color = '#E91E63'; // Make timer red when low
+            countdownTimerSpan.classList.add('low-time'); // Add class for animation
         } else {
-            countdownTimerSpan.style.color = '#FFC107'; // Yellow otherwise
+            countdownTimerSpan.classList.remove('low-time'); // Remove if not low
         }
 
         if (timeLeft <= 0) {
@@ -112,11 +114,12 @@ function handleTimeOut() {
     currentLivesSpan.textContent = lives;
     optionsContainer.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true); // Disable options
     nextQuestionBtn.classList.remove('hidden'); // Show next question button
+    countdownTimerSpan.classList.remove('low-time'); // Stop animation
 
     if (lives <= 0) {
         endGame("You ran out of lives! Better luck next time.");
     } else {
-        // Optionally, highlight the correct answer if time runs out
+        // Highlight the correct answer if time runs out
         const currentQ = levelQuestions[currentQuestionIndex];
         if (currentQ) { // Ensure question exists before trying to highlight
             optionsContainer.querySelectorAll('.option-btn').forEach(btn => {
@@ -135,6 +138,7 @@ function loadQuestion() {
     if (currentQuestionIndex >= levelQuestions.length || levelQuestions.length === 0) {
         // All questions for the current level answered OR no questions were available
         clearInterval(timer);
+        countdownTimerSpan.classList.remove('low-time'); // Stop animation
 
         if (currentLevel < MAX_LEVELS && levelQuestions.length > 0) { // Only proceed to level complete if there were questions
             showScreen(levelCompleteScreen);
@@ -170,6 +174,7 @@ function loadQuestion() {
 
 function checkAnswer(selectedButton, correctAnswer, motivationMsg) {
     clearInterval(timer); // Stop the timer
+    countdownTimerSpan.classList.remove('low-time'); // Stop animation
 
     const selectedAnswer = selectedButton.dataset.option;
     optionsContainer.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true); // Disable all options after selection
@@ -203,6 +208,7 @@ function checkAnswer(selectedButton, correctAnswer, motivationMsg) {
 
 function endGame(message, completedAllLevels = false) {
     clearInterval(timer);
+    countdownTimerSpan.classList.remove('low-time'); // Stop animation
     showScreen(gameOverScreen);
     gameOverMessage.textContent = message;
     if (completedAllLevels) {
@@ -277,6 +283,4 @@ homeScreenBtn.addEventListener('click', () => {
 });
 
 // Initial display: show the start screen
-// Ensure this runs AFTER the DOM is fully loaded and all elements are available.
-// Since script.js is at the end of <body>, this typically works.
 showScreen(startScreen);
