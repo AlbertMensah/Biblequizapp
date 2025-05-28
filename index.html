@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Quiz for Kids</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bible Quiz Adventure!</h1>
+            <div class="lives-indicator">
+                Lives: <span id="current-lives">5</span> ❤️
+            </div>
+            <div class="timer-container">
+                Time Left: <span id="countdown-timer">30</span>s
+            </div>
+        </header>
+
+        <main id="game-screen" class="hidden"> <div id="level-indicator">Level: <span id="current-level">1</span></div>
+            <div id="score-indicator">Score: <span id="current-score">0</span></div>
+
+            <div id="question-area">
+                <p id="question-text">Loading question...</p>
+                <div id="options-container" class="options-grid">
+                    <button class="option-btn" data-option="A">Option A</button>
+                    <button class="option-btn" data-option="B">Option B</button>
+                    <button class="option-btn" data-option="C">Option C</button>
+                    <button class="option-btn" data-option="D">Option D</button>
+                </div>
+            </div>
+
+            <div id="feedback-area">
+                <p id="motivation-message"></p>
+                <button id="next-question-btn" class="hidden">Next Question</button>
+                </div>
+        </main>
+
+        <div id="start-screen" class="screen">
+            <h2>Welcome, Little Bible Explorer!</h2>
+            <p>Choose your adventure level:</p>
+            <button id="start-normal-btn" class="start-btn">Normal</button>
+            <button id="start-difficult-btn" class="start-btn">Difficult</button>
+        </div>
+
+        <div id="level-complete-screen" class="screen hidden">
+            <h2>Level Complete! 🎉</h2>
+            <p>You did great on Level <span id="completed-level"></span>!</p>
+            <div class="button-group"> <button id="next-level-btn">Next Level!</button>
+                <button id="quit-game-btn">Quit Game</button>
+            </div>
+        </div>
+
+        <div id="game-over-screen" class="screen hidden">
+            <h2>Game Over! 😔</h2>
+            <p id="game-over-message"></p>
+            <div class="button-group"> <button id="play-again-btn">Play Again</button>
+                <button id="home-screen-btn">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="correct-sound" preload="auto">
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="wrong-sound" preload="auto">
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

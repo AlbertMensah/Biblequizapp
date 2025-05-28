@@ -1,0 +1,337 @@
+/* General Body Styles */
+body {
+    font-family: 'Open Sans', sans-serif; /* A clear, readable font */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically in the viewport */
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom right, #a8e6cf, #dff9fb, #ffee93); /* Soft gradient from green to white to yellow */
+    color: #333; /* Dark gray for text */
+    overflow: hidden; /* Prevent scrollbars for animated background */
+}
+
+/* Container for the whole game */
+.container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px 40px;
+    text-align: center;
+    width: 90%;
+    max-width: 650px; /* Slightly wider max-width for better content display */
+    box-sizing: border-box;
+    position: relative; /* For absolute positioning of screens */
+    overflow: hidden; /* Ensures screens don't overflow */
+    min-height: 550px; /* Ensure a minimum height for consistent layout */
+    display: flex; /* Use flexbox for container content */
+    flex-direction: column; /* Stack header, main, and screens vertically */
+    justify-content: space-between; /* Distribute space */
+    align-items: center; /* Center content horizontally */
+}
+
+/* Header Styles */
+header {
+    margin-bottom: 25px;
+    width: 100%; /* Ensure header takes full width */
+    display: flex;
+    justify-content: space-between; /* Space out lives and timer */
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 10px; /* Space between items if they wrap */
+}
+
+h1 {
+    font-family: 'Fredoka One', cursive; /* Playful font for title */
+    color: #4CAF50; /* A nice bright green */
+    font-size: 2.8em; /* Slightly larger title */
+    margin: 0 auto 10px auto; /* Center title, adjust margin */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    width: 100%; /* Ensure title takes full width */
+}
+
+.timer-container, .lives-indicator {
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #FFF;
+    border-radius: 15px;
+    padding: 8px 15px;
+    display: inline-flex; /* Use inline-flex for proper alignment */
+    align-items: center;
+    gap: 5px; /* Space between text and icon */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.timer-container {
+    color: #FFC107; /* Bright yellow for timer */
+    border: 2px solid #FFC107;
+}
+
+.lives-indicator {
+    color: #E91E63; /* Red for lives */
+    border: 2px solid #E91E63;
+}
+
+
+/* Game Screen Specifics */
+main#game-screen {
+    width: 100%; /* Ensure main takes full width */
+    flex-grow: 1; /* Allows main content to grow and fill available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space between sections */
+}
+
+#level-indicator, #score-indicator {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between level and score */
+}
+
+#question-area {
+    background-color: #F8F8F8;
+    border: 2px solid #FFEB3B; /* Light yellow border */
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 5px;
+    min-height: 160px; /* Ensure a consistent height for questions */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05); /* Soft inner shadow */
+}
+
+#question-text {
+    font-size: 1.6em; /* Slightly larger question text */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px; /* More space before options */
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 15px;
+    width: 100%;
+}
+
+.option-btn {
+    background-color: #9CCC65; /* A softer green */
+    color: white;
+    padding: 1px 1px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em; /* Larger text for options */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 5px 0 #7CB342; /* Darker green for a "pressed" effect */
+    min-height: 60px; /* Ensure buttons have a minimum height */
+    display: flex; /* Use flexbox to center text vertically */
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Ensure text is centered */
+}
+
+.option-btn:hover {
+    background-color: #8BC34A; /* Slightly darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.option-btn:active {
+    background-color: #7CB342; /* Even darker when clicked */
+    transform: translateY(3px); /* Press down effect */
+    box-shadow: 0 2px 0 #558B2F; /* Smaller shadow when pressed */
+}
+
+/* Feedback messages */
+#feedback-area {
+    margin-top: 1px;
+    min-height: 80px; /* Increased min-height to accommodate longer messages */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center feedback vertically */
+    align-items: center;
+}
+
+#motivation-message {
+    font-size: 1.4em; /* Larger motivation message */
+    font-weight: bold;
+    margin-bottom: 1px; /* Space before button */
+    color: #555;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+/* General Button Styles */
+button {
+    background-color: #4CAF50; /* Primary green button */
+    color: white;
+    padding: 15px 30px; /* Larger padding for all main buttons */
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em; /* Larger font for all main buttons */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin: 10px; /* Space between buttons */
+    box-shadow: 0 4px 0 #388E3C;
+    min-width: 150px; /* Ensure minimum width for consistency */
+}
+
+button:hover {
+    background-color: #43A047;
+    transform: translateY(-2px); /* Consistent lift on hover */
+    box-shadow: 0 6px 0 #388E3C; /* Lifted shadow */
+}
+
+button:active {
+    background-color: #388E3C;
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #1B5E20;
+}
+
+/* Specific button styles */
+.start-btn {
+    background-color: #FFC107; /* Yellow for start buttons */
+    box-shadow: 0 4px 0 #FFA000;
+}
+.start-btn:hover { background-color: #FFB300; }
+.start-btn:active { background-color: #FFA000; box-shadow: 0 1px 0 #FF8F00; }
+
+#next-question-btn {
+    background-color: #2196F3; /* Blue for next question */
+    box-shadow: 0 4px 0 #1976D2;
+}
+#next-question-btn:hover { background-color: #1E88E5; }
+#next-question-btn:active { background-color: #1976D2; box-shadow: 0 1px 0 #1565C0; }
+
+
+/* Correct/Wrong Feedback */
+.correct {
+    background-color: #8BC34A; /* Green for correct answer */
+    box-shadow: 0 5px 0 #689F38;
+}
+.wrong {
+    background-color: #FF5252; /* Red for wrong answer */
+    box-shadow: 0 5px 0 #D32F2F;
+}
+
+/* Screen Management (Start, Level Complete, Game Over) */
+.screen {
+    position: absolute; /* Allows overlaying screens */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.98); /* White overlay */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 10; /* Ensure screens are on top */
+    gap: 20px; /* Space between elements within screens */
+}
+
+.hidden {
+    display: none !important; /* Force hide element */
+}
+
+/* Start Screen Specifics */
+#start-screen h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3em; /* Larger for impact */
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+#start-screen p {
+    font-size: 1.5em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Game Over and Level Complete Screen Specifics */
+#level-complete-screen h2, #game-over-screen h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3em; /* Larger for impact */
+    margin-bottom: 20px;
+    color: #FFC107; /* Yellow for celebration/alert */
+}
+
+#level-complete-screen p, #game-over-screen p {
+    font-size: 1.6em; /* Larger text for feedback */
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 25px;
+        min-height: auto; /* Allow height to adjust on small screens */
+    }
+
+    h1 {
+        font-size: 2.2em;
+    }
+    header {
+        flex-direction: column; /* Stack timer and lives on small screens */
+    }
+    .timer-container, .lives-indicator {
+        width: fit-content; /* Adjust width to content */
+    }
+
+    #question-text {
+        font-size: 1.3em;
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+
+    .option-btn {
+        padding: 12px 15px;
+        font-size: 1.1em;
+        min-height: 50px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1.1em;
+        min-width: unset; /* Remove min-width on small screens */
+        width: 100%; /* Take full width on small screens */
+    }
+
+    .screen {
+        gap: 15px; /* Smaller gap for screens on small devices */
+    }
+
+    #start-screen h2, #level-complete-screen h2, #game-over-screen h2 {
+        font-size: 2.5em;
+    }
+    #start-screen p, #level-complete-screen p, #game-over-screen p {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    #question-text {
+        font-size: 1.1em;
+    }
+    .option-btn {
+        font-size: 1em;
+    }
+    button {
+        font-size: 1em;
+    }
+}
