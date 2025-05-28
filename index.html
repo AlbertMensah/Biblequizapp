@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Ghana History Quiz</title>
-    <link rel="stylesheet" href="style.css"/>
+    <title>Kids Bible Quiz</title> <link rel="stylesheet" href="style.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -12,18 +11,17 @@
     <div class="game-wrapper">
 
         <div id="start-screen" class="screen">
-            <h1>Ghana History Quiz</h1>
-            <p>Select Difficulty:</p>
+            <h1>Kids Bible Quiz</h1> <p>Select Difficulty:</p>
             <button id="start-normal-btn" class="start-btn">Normal</button>
             <button id="start-difficult-btn" class="start-btn">Difficult</button>
         </div>
 
         <div id="game-screen" class="screen hidden">
             <div class="game-header">
-                <p>Level: <span id="current-level">1</span></p>
-                <p>Score: <span id="current-score">0</span></p>
-                <p>Lives: <span id="current-lives">5</span></p>
-                <p>Time Left: <span id="countdown-timer">15</span> sec</p>
+                <p>Level: <span id="current-level" class="header-indicator level-indicator">1</span></p>
+                <p>Score: <span id="current-score" class="header-indicator score-indicator">0</span></p>
+                <p>Lives: <span id="current-lives" class="header-indicator lives-indicator">5</span></p>
+                <p>Time Left: <span id="countdown-timer" class="header-indicator timer-indicator">15</span> sec</p>
             </div>
             <div class="question-box">
                 <p id="question-text"></p>
@@ -46,7 +44,9 @@
             <button id="home-screen-btn">Home</button>
         </div>
 
-    </div> <script src="questions.js"></script>
+    </div>
+
+    <script src="questions.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
