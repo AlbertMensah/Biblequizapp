@@ -237,7 +237,7 @@ button:active {
     padding: 20px;
     box-sizing: border-box;
     z-index: 10; /* Ensure screens are on top */
-    gap: 20px; /* Space between elements within screens */
+    gap: 10px; /* Space between elements within screens */
 }
 
 .hidden {
