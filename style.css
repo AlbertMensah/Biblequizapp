@@ -254,7 +254,7 @@ button:active {
 #start-screen p {
     font-size: 1.5em;
     color: #555;
-    margin-bottom: 30px;
+    margin-bottom: 2px;
 }
 
 /* Game Over and Level Complete Screen Specifics */
