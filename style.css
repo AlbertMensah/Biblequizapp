@@ -1,1 +1,339 @@
+/* General Body Styles */
+body {
+    font-family: 'Open Sans', sans-serif; /* A clear, readable font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom right, #a8e6cf, #dff9fb, #ffee93); /* Soft gradient from green to white to yellow */
+    color: #333; /* Dark gray for text */
+    /* Removed overflow: hidden from body to prevent content cutoff if it exceeds viewport,
+       though for games, it's usually desired that content fits without scroll. */
+}
 
+/* Container for the whole game - now named .game-wrapper */
+.game-wrapper {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px 40px;
+    text-align: center;
+    width: 90%; /* Take 90% of screen width */
+    max-width: 600px; /* But not wider than 600px */
+    box-sizing: border-box;
+    position: relative; /* CRITICAL: Screens will position absolutely within this */
+    overflow: hidden; /* Ensures screens don't overflow during transitions */
+    display: flex; /* Flex container to center content inside */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px; /* Minimum height for consistency */
+    height: 80vh; /* Take up 80% of viewport height on larger screens */
+    max-height: 800px; /* Prevent it from getting too tall */
+}
+
+/* Header Styles */
+header { /* This specific header element was removed from HTML, but keeping rule if you re-add it */
+    margin-bottom: 25px;
+    position: relative;
+}
+
+h1 {
+    font-family: 'Fredoka One', cursive; /* Playful font for title */
+    color: #4CAF50; /* A nice bright green */
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+/* General button styles */
+button {
+    background-color: #4CAF50; /* Primary green button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin: 10px; /* Space between buttons */
+    box-shadow: 0 4px 0 #388E3C;
+}
+
+button:hover {
+    background-color: #43A047;
+    transform: translateY(-1px);
+}
+
+button:active {
+    background-color: #388E3C;
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #1B5E20;
+}
+
+/* Specific button styles */
+.start-btn {
+    background-color: #FFC107; /* Yellow for start buttons */
+    box-shadow: 0 4px 0 #FFA000;
+}
+.start-btn:hover { background-color: #FFB300; }
+.start-btn:active { background-color: #FFA000; box-shadow: 0 1px 0 #FF8F00; }
+
+#next-question-btn {
+    background-color: #2196F3; /* Blue for next question */
+    box-shadow: 0 4px 0 #1976D2;
+}
+#next-question-btn:hover { background-color: #1E88E5; }
+#next-question-btn:active { background-color: #1976D2; box-shadow: 0 1px 0 #1565C0; }
+
+
+/* Game Screen Specifics */
+.game-header {
+    display: flex; /* Use flexbox to arrange items */
+    justify-content: space-around; /* Distribute space evenly */
+    align-items: center; /* Vertically align items */
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #666;
+}
+
+/* Individual header indicators */
+.game-header p {
+    margin: 0 5px; /* Reduce horizontal margin for small screens */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between label and span */
+}
+
+/* Specific styles for timer and lives displays */
+.timer-container, .lives-indicator { /* Applying styles to the spans directly */
+    font-size: 1.2em; /* Adjusted for better visibility */
+    font-weight: bold;
+    background-color: #FFF;
+    border-radius: 15px;
+    padding: 8px 15px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Specific colors for timer and lives */
+#countdown-timer {
+    color: #FFC107; /* Bright yellow for timer */
+    border: 2px solid #FFC107;
+}
+
+#current-lives {
+    color: #E91E63; /* Red for lives */
+    border: 2px solid #E91E63;
+}
+
+
+.question-box { /* New wrapper around question text and options */
+    background-color: #F8F8F8;
+    border: 2px solid #FFEB3B; /* Light yellow border */
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    min-height: 150px; /* Ensure a consistent height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Make it fill the available width */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+#question-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.options-grid { /* Renamed from .options to match HTML */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 15px;
+    width: 100%;
+}
+
+.option-btn {
+    background-color: #9CCC65; /* A softer green */
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 5px 0 #7CB342; /* Darker green for a "pressed" effect */
+}
+
+.option-btn:hover {
+    background-color: #8BC34A; /* Slightly darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.option-btn:active {
+    background-color: #7CB342; /* Even darker when clicked */
+    transform: translateY(3px); /* Press down effect */
+    box-shadow: 0 2px 0 #558B2F; /* Smaller shadow when pressed */
+}
+
+/* Feedback messages */
+#motivation-message {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 20px;
+    min-height: 30px; /* To prevent layout shift */
+}
+
+/* Correct/Wrong Feedback */
+.correct {
+    background-color: #8BC34A; /* Green for correct answer */
+    box-shadow: 0 5px 0 #689F38;
+}
+.wrong {
+    background-color: #FF5252; /* Red for wrong answer */
+    box-shadow: 0 5px 0 #D32F2F;
+}
+
+/* Screen Management - CRITICAL for overlaying screens */
+.screen {
+    position: absolute; /* Positions absolutely within .game-wrapper */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Fill the parent .game-wrapper */
+    background-color: rgba(255, 255, 255, 0.98); /* White overlay */
+    border-radius: 20px;
+    display: flex; /* Makes the screen content flex */
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    align-items: center; /* Horizontally center content */
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 10; /* Ensure screens are on top */
+    gap: 15px; /* Spacing between elements within the screen */
+}
+
+.hidden {
+    display: none !important; /* Force hide element */
+}
+
+/* Game Over and Level Complete */
+#level-complete-screen h2, #game-over-screen h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: #FFC107; /* Yellow for celebration/alert */
+}
+
+#level-complete-screen p, #game-over-screen p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Responsive adjustments (mobile first approach with max-width) */
+@media (max-width: 768px) {
+    .game-wrapper {
+        padding: 20px 25px;
+        width: 95%; /* Give a bit more breathing room on small screens */
+        height: 90vh; /* Allow it to take more vertical space */
+        min-height: unset; /* Let height adjust dynamically */
+    }
+
+    h1 {
+        font-size: 2em; /* Smaller title */
+    }
+
+    .game-header {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        gap: 5px; /* Small gap between stacked items */
+        font-size: 0.9em; /* Make text a bit smaller */
+        margin-bottom: 10px;
+    }
+
+    .game-header p {
+        margin: 5px 0; /* Adjust margin for stacking */
+    }
+
+    .timer-container, #current-lives {
+        padding: 6px 12px; /* Smaller padding */
+        font-size: 1em;
+    }
+
+    #question-text {
+        font-size: 1.2em; /* Smaller question font */
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+        gap: 10px; /* Reduce gap slightly */
+    }
+
+    .option-btn {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+        margin: 8px; /* Slightly reduce margin between buttons */
+    }
+
+    #question-box {
+        min-height: 120px; /* Adjust min-height for smaller screens if necessary */
+        padding: 15px;
+    }
+
+    #motivation-message {
+        font-size: 1.1em; /* Smaller message font */
+        margin-top: 15px;
+    }
+
+    #level-complete-screen h2, #game-over-screen h2 {
+        font-size: 2em; /* Smaller headings for game over/complete */
+    }
+
+    #level-complete-screen p, #game-over-screen p {
+        font-size: 1em; /* Smaller paragraph text */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Even smaller adjustments for very narrow phones */
+    .game-wrapper {
+        padding: 15px 15px;
+        height: 95vh; /* Take up more vertical space on very small screens */
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    #question-text {
+        font-size: 1.1em;
+    }
+
+    .option-btn {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 0.95em;
+        margin: 6px;
+    }
+
+    .game-header {
+        font-size: 0.85em;
+    }
+}
