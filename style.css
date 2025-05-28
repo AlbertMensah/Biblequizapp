@@ -6,41 +6,43 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    /* More vibrant, playful gradient */
-    background: linear-gradient(to bottom right, #82E0AA, #A9CCE3, #F9E79F); /* Brighter green-blue-yellow */
+    background: linear-gradient(to bottom right, #A8E6CF, #D4EDDA, #FFE799); /* Softer, brighter gradient */
     color: #333;
+    -webkit-font-smoothing: antialiased; /* Smoother font rendering */
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden; /* Prevent body scroll if game wrapper manages its own overflow */
 }
 
 /* Container for the whole game - now named .game-wrapper */
 .game-wrapper {
-    background-color: rgba(255, 255, 255, 0.98); /* Less transparent white for vibrancy */
-    border-radius: 25px; /* Slightly more rounded corners */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
-    padding: 30px 40px;
+    background-color: #FFFFFF; /* Pure white for clean contrast */
+    border-radius: 20px; /* Slightly less rounded than before */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Softer, more diffused shadow */
+    padding: 25px 35px; /* Adjusted padding */
     text-align: center;
-    width: 90%;
-    max-width: 600px;
+    width: 95%; /* Take more width on smaller screens */
+    max-width: 650px; /* Slightly wider max-width */
     box-sizing: border-box;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Keep content within bounds */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between; /* Distribute space between sections */
     align-items: center;
-    min-height: 500px;
-    height: 80vh;
-    max-height: 800px;
-    border: 5px solid #F0B27A; /* Playful border color */
+    height: 90vh; /* Use vh for better scaling on mobile */
+    max-height: 850px;
+    border: 2px solid #F0B27A; /* Thinner, subtle border */
+    gap: 15px; /* Space between main sections */
 }
 
 /* Header Styles */
 h1 {
     font-family: 'Fredoka One', cursive;
     color: #3498DB; /* Bright blue for title */
-    font-size: 3em; /* Slightly larger title */
-    margin-bottom: 20px;
-    text-shadow: 3px 3px 7px rgba(0,0,0,0.2); /* More prominent shadow */
-    letter-spacing: 2px; /* Add some spacing */
+    font-size: 2.8em; /* Adjusted size */
+    margin-bottom: 15px; /* Less margin */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Softer shadow */
+    letter-spacing: 1.5px;
 }
 
 /* Game Header Indicators (Level, Score, Lives, Timer) */
@@ -49,35 +51,37 @@ h1 {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    margin-bottom: 25px; /* More space below header */
-    font-size: 1.1em;
+    margin-bottom: 20px; /* Less margin below header */
+    font-size: 1em;
     font-weight: bold;
     color: #555;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-    gap: 10px; /* Gap between items */
+    flex-wrap: wrap;
+    gap: 8px; /* Slightly smaller gap between items */
 }
 
 .game-header p {
-    margin: 0; /* Remove default paragraph margin */
+    margin: 0;
     display: flex;
-    flex-direction: column; /* Stack label and value */
+    flex-direction: column;
     align-items: center;
     text-align: center;
-    font-size: 0.9em; /* Label text size */
+    font-size: 0.85em; /* Label text size */
+    flex-shrink: 0; /* Prevent shrinking on small screens */
 }
 
-.header-indicator { /* General style for all data indicators */
-    font-family: 'Fredoka One', cursive; /* Use playful font for numbers */
-    font-size: 1.6em; /* Make numbers very prominent */
+.header-indicator {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4em; /* Adjusted size */
     font-weight: bold;
-    color: white; /* White text for contrast */
-    border-radius: 15px; /* Consistent rounding */
-    padding: 8px 15px;
-    margin-top: 5px; /* Space between label and number */
-    min-width: 60px; /* Ensure consistent width */
+    color: white;
+    border-radius: 12px; /* Softer rounding */
+    padding: 6px 12px; /* Reduced padding */
+    margin-top: 4px;
+    min-width: 55px;
     display: inline-block;
-    box-shadow: 0 3px 0 rgba(0,0,0,0.2); /* Subtle shadow for depth */
-    border: 3px solid; /* Add a border, color defined per type */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15), inset 0 0 5px rgba(255,255,255,0.3); /* Subtle outer and inner shadow */
+    border: 2px solid; /* Thinner border */
+    line-height: 1.2; /* Ensure number is centered vertically */
 }
 
 /* Specific indicator colors */
@@ -86,8 +90,8 @@ h1 {
     border-color: #E67E22;
 }
 .score-indicator {
-    background-color: #27AE60; /* Emerald Green */
-    border-color: #2ECC71;
+    background-color: #2ECC71; /* Emerald Green */
+    border-color: #28B463;
 }
 .lives-indicator {
     background-color: #E74C3C; /* Alizarin Red */
@@ -100,151 +104,159 @@ h1 {
 
 /* Timer low animation */
 .timer-indicator.low-time {
-    animation: pulse 1s infinite;
+    animation: pulse 1s infinite alternate; /* Added alternate */
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 3px 0 rgba(0,0,0,0.2); }
-    50% { transform: scale(1.05); box-shadow: 0 6px 10px rgba(0,0,0,0.3); }
-    100% { transform: scale(1); box-shadow: 0 3px 0 rgba(0,0,0,0.2); }
+    0% { transform: scale(1); box-shadow: 0 2px 4px rgba(0,0,0,0.15), inset 0 0 5px rgba(255,255,255,0.3); }
+    50% { transform: scale(1.03); box-shadow: 0 4px 8px rgba(0,0,0,0.25), inset 0 0 8px rgba(255,255,255,0.5); }
+    100% { transform: scale(1); box-shadow: 0 2px 4px rgba(0,0,0,0.15), inset 0 0 5px rgba(255,255,255,0.3); }
 }
 
 /* Question Box */
 .question-box {
-    background-color: #ECF0F1; /* Lighter background for contrast */
-    border: 4px solid #F0B27A; /* Bold border */
-    border-radius: 20px; /* More rounded */
-    padding: 25px;
-    min-height: 160px;
-    display: flex; /* Use flexbox for better internal content management */
+    background-color: #FFFFFF; /* White background for question */
+    border: 2px solid #F0B27A; /* Consistent border style */
+    border-radius: 18px; /* Softer rounding */
+    padding: 20px; /* Reduced padding for more vertical space */
+    margin-bottom: 15px; /* Space below question box */
+    min-height: 150px; /* Minimum height for stability */
+    display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
+    justify-content: center; /* Vertically center content */
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.05); /* Subtle inner shadow */
-    position: relative; /* Ensure it's a positioning context for children if needed */
-    height: auto; /* Allow height to adjust based on content */
-    margin-bottom: 20px; /* Slightly reduce margin as the message is now inside or immediately after */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Subtle lift */
+    flex-grow: 1; /* Allow it to grow and take available space */
 }
 
 #question-text {
-    font-size: 1.6em; /* Slightly larger question text */
+    font-size: 1.5em; /* Adjusted size */
     font-weight: bold;
     color: #333;
-    margin-bottom: 25px; /* Keep consistent spacing below question */
-    text-align: center; /* Ensure text is centered within its available space */
-    width: 100%; /* Make sure it takes full width */
+    margin-bottom: 20px; /* Consistent margin */
+    text-align: center;
+    line-height: 1.3;
+    word-wrap: break-word; /* Ensure long words break */
+    max-width: 100%; /* Ensure text stays within bounds */
 }
 
 .options-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px; /* Slightly larger gap for options */
-    width: 100%; /* Ensure it takes full width of parent */
-    padding-bottom: 10px; /* Add a little internal padding if options touch bottom */
+    /* Responsive Grid: as many columns as fit, each min 120px, max 1fr */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px; /* Consistent gap */
+    width: 100%;
+    flex-grow: 1; /* Allow options to grow and fill space */
+    align-items: center; /* Center options vertically in their cells */
+    justify-content: center; /* Center options horizontally in their cells */
 }
 
 .option-btn {
     background-color: #5DADE2; /* Vibrant blue for options */
     color: white;
-    padding: 18px 20px; /* More padding, "chunky" feel */
+    padding: 15px 18px; /* Reduced padding for a less "chunky" feel */
     border: none;
-    border-radius: 12px; /* More rounded */
-    font-size: 1.2em; /* Larger font for options */
+    border-radius: 10px; /* Softer rounding */
+    font-size: 1.1em; /* Adjusted font size */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-    box-shadow: 0 6px 0 #2E86C1; /* Darker blue for pressed effect */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 0 #2E86C1; /* Softer shadow for pressed effect */
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    line-height: 1.2; /* Ensure text is vertically centered */
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Break long words */
 }
 
 .option-btn:hover {
     background-color: #3498DB; /* Slightly darker on hover */
-    transform: translateY(-3px); /* More lift */
-    box-shadow: 0 8px 0 #2874A6;
+    transform: translateY(-2px); /* Less lift */
+    box-shadow: 0 6px 0 #2874A6;
 }
 
 .option-btn:active {
     background-color: #2E86C1; /* Even darker when clicked */
-    transform: translateY(3px);
-    box-shadow: 0 2px 0 #21618C;
+    transform: translateY(2px); /* Less push down */
+    box-shadow: 0 1px 0 #21618C;
 }
 
 /* Feedback messages */
 #motivation-message {
-    font-size: 1.4em; /* Larger message */
+    font-size: 1.3em; /* Adjusted size */
     font-weight: bold;
-    margin-top: 25px;
-    min-height: 35px;
-    color: #666; /* Keep text readable */
-    width: 100%; /* Ensure it takes full width */
-    text-align: center; /* Center the message */
-    box-sizing: border-box; /* Include padding/border in width */
+    margin-top: 15px; /* Reduced margin */
+    min-height: 30px; /* Smaller reserved space */
+    color: #666;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* General Buttons (Start, Next, Quit, Play Again) */
 button {
     background-color: #28B463; /* Forest Green for general buttons */
     color: white;
-    padding: 15px 30px; /* Larger padding */
+    padding: 12px 25px; /* Adjusted padding */
     border: none;
-    border-radius: 10px; /* More rounded */
-    font-size: 1.2em; /* Larger font */
+    border-radius: 8px; /* Softer rounding */
+    font-size: 1.1em; /* Adjusted font size */
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    margin: 12px;
-    box-shadow: 0 5px 0 #1D8348;
-    text-transform: uppercase; /* Make text uppercase for impact */
-    letter-spacing: 1px;
+    margin: 10px; /* Reduced margin */
+    box-shadow: 0 4px 0 #1D8348; /* Softer shadow */
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: bold;
 }
 
 button:hover {
     background-color: #239B56;
-    transform: translateY(-2px);
-    box-shadow: 0 7px 0 #176F43;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 0 #176F43;
 }
 
 button:active {
     background-color: #1D8348;
-    transform: translateY(3px);
-    box-shadow: 0 2px 0 #135232;
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #135232;
 }
 
 /* Specific button styles */
 .start-btn {
     background-color: #F1C40F; /* Sunflower Yellow */
-    box-shadow: 0 5px 0 #F39C12;
+    box-shadow: 0 4px 0 #F39C12;
 }
 .start-btn:hover { background-color: #F4D03F; }
-.start-btn:active { background-color: #F39C12; box-shadow: 0 2px 0 #E67E22; }
+.start-btn:active { background-color: #F39C12; box-shadow: 0 1px 0 #E67E22; }
 
 #next-question-btn {
     background-color: #8E44AD; /* Amethyst Purple */
-    box-shadow: 0 5px 0 #6C3483;
+    box-shadow: 0 4px 0 #6C3483;
 }
 #next-question-btn:hover { background-color: #9B59B6; }
-#next-question-btn:active { background-color: #6C3483; box-shadow: 0 2px 0 #5B2C6F; }
+#next-question-btn:active { background-color: #6C3483; box-shadow: 0 1px 0 #5B2C6F; }
 
 /* Correct/Wrong Feedback */
 .correct {
     background-color: #2ECC71; /* Emerald Green */
-    box-shadow: 0 6px 0 #28B463;
+    box-shadow: 0 4px 0 #28B463;
 }
 .wrong {
     background-color: #E74C3C; /* Alizarin Red */
-    box-shadow: 0 6px 0 #C0392B;
+    box-shadow: 0 4px 0 #C0392B;
 }
 
 /* Screen Management */
 .screen {
-    position: absolute;
+    position: absolute; /* Keeps screens stacked and controlled by JS */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.99); /* Almost opaque white */
-    border-radius: 25px; /* Match wrapper */
+    border-radius: 20px; /* Match wrapper */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -252,48 +264,50 @@ button:active {
     padding: 20px;
     box-sizing: border-box;
     z-index: 10;
-    gap: 15px;
+    gap: 15px; /* Consistent spacing between elements on screens */
 }
 
 .hidden {
-    display: none !important;
+    display: none !important; /* Force hide */
 }
 
 /* Game Over and Level Complete */
 #level-complete-screen h2, #game-over-screen h2 {
     font-family: 'Fredoka One', cursive;
-    font-size: 3.2em; /* Even bigger headings */
-    margin-bottom: 25px;
+    font-size: 2.8em; /* Adjusted size */
+    margin-bottom: 20px;
     color: #F1C40F; /* Sunflower Yellow */
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.15);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 #level-complete-screen p, #game-over-screen p {
-    font-size: 1.4em;
-    margin-bottom: 35px;
+    font-size: 1.3em;
+    margin-bottom: 30px;
     color: #555;
     line-height: 1.4;
 }
 
-/* Responsive adjustments */
+/* ========================================= */
+/* RESPONSIVE ADJUSTMENTS              */
+/* ========================================= */
+
+/* Mobile Portrait - General adjustments for smaller screens */
 @media (max-width: 768px) {
     .game-wrapper {
-        padding: 20px 25px;
-        width: 95%;
-        height: 90vh;
-        min-height: unset;
-        border-width: 3px; /* Smaller border on mobile */
+        padding: 20px 20px;
+        height: 95vh;
+        max-height: 900px; /* Prevent it from getting too tall on some phones */
     }
 
     h1 {
         font-size: 2.2em;
+        margin-bottom: 10px;
     }
 
     .game-header {
-        flex-direction: row; /* Keep in a row if possible, but wrap */
-        justify-content: center;
-        gap: 8px; /* Slightly smaller gap */
-        margin-bottom: 20px;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        gap: 6px;
     }
 
     .game-header p {
@@ -301,96 +315,38 @@ button:active {
     }
 
     .header-indicator {
-        font-size: 1.3em;
-        padding: 6px 12px;
-        min-width: 50px;
-        border-width: 2px;
-        margin-top: 3px;
-    }
-
-    .question-box {
-        padding: 20px; /* Adjust padding for smaller screens */
-        min-height: 140px; /* Slightly reduce min-height */
-        margin-bottom: 15px; /* Adjust margin */
-    }
-
-    #question-text {
-        font-size: 1.3em;
-        margin-bottom: 20px;
-    }
-
-    .options-grid {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
-        gap: 12px;
-        padding-bottom: 5px; /* Adjust padding */
-    }
-
-    .option-btn {
-        padding: 15px 15px;
-        font-size: 1.1em;
-        border-radius: 10px;
-    }
-
-    button {
-        padding: 12px 25px;
-        font-size: 1.1em;
-        margin: 10px;
-        border-radius: 8px;
-    }
-
-    #question-box { /* This ID selector was missing padding in the original code, now included */
-        min-height: 140px;
-        padding: 20px;
-    }
-
-    #motivation-message {
         font-size: 1.2em;
-        margin-top: 20px;
-    }
-
-    #level-complete-screen h2, #game-over-screen h2 {
-        font-size: 2.5em;
-    }
-
-    #level-complete-screen p, #game-over-screen p {
-        font-size: 1.2em;
-    }
-}
-
-@media (max-width: 480px) {
-    .game-wrapper {
-        padding: 15px 15px;
-        height: 95vh;
-    }
-
-    h1 {
-        font-size: 1.8em;
-    }
-
-    .game-header {
-        font-size: 0.75em;
-        gap: 5px;
-    }
-
-    .header-indicator {
-        font-size: 1.1em;
         padding: 5px 10px;
+        min-width: 45px;
     }
 
     .question-box {
         padding: 15px;
-        min-height: 120px; /* Further reduce min-height */
+        min-height: 120px;
         margin-bottom: 10px;
     }
 
     #question-text {
-        font-size: 1.1em;
+        font-size: 1.2em;
         margin-bottom: 15px;
     }
 
+    .options-grid {
+        gap: 10px;
+        /* On very small screens, maybe force single column for options */
+        grid-template-columns: 1fr;
+    }
+
     .option-btn {
-        padding: 12px 12px;
+        padding: 12px 15px;
         font-size: 1em;
+        border-radius: 8px;
+    }
+
+    #motivation-message {
+        font-size: 1.1em;
+        margin-top: 10px;
+        min-height: 25px;
     }
 
     button {
@@ -404,6 +360,121 @@ button:active {
     }
 
     #level-complete-screen p, #game-over-screen p {
+        font-size: 1.1em;
+    }
+}
+
+/* Mobile Landscape Specifics (adjust for horizontal orientation) */
+@media (max-height: 500px) and (orientation: landscape) {
+    .game-wrapper {
+        flex-direction: row; /* Layout content horizontally */
+        flex-wrap: wrap; /* Allow wrapping if needed */
+        justify-content: space-around;
+        height: 98vh; /* Maximize vertical space in landscape */
+        width: 98vw; /* Maximize horizontal space */
+        padding: 15px;
+        max-width: unset; /* Remove max-width constraint */
+        min-height: unset; /* Remove min-height constraint */
+        gap: 10px; /* Smaller gap between main sections */
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 5px;
+        width: 100%; /* Take full width */
+    }
+
+    .game-header {
+        flex-direction: column; /* Stack stats vertically */
+        justify-content: center;
+        width: 30%; /* Dedicate a column for stats */
+        margin-bottom: 0;
+        gap: 5px;
+        align-self: flex-start; /* Align to the top of its row */
+    }
+
+    .game-header p {
+        font-size: 0.7em;
+    }
+
+    .header-indicator {
         font-size: 1em;
+        padding: 3px 8px;
+        min-width: 40px;
+        margin-top: 2px;
+    }
+
+    .game-screen {
+        flex-direction: row; /* Arrange content side-by-side */
+        flex-wrap: wrap; /* Allow question and options to wrap */
+        justify-content: space-around;
+        align-items: flex-start; /* Align items to the top */
+        padding: 10px;
+        gap: 10px;
+        width: 65%; /* Take up remaining horizontal space */
+    }
+
+    .question-box {
+        padding: 10px;
+        min-height: 80px; /* Reduced min-height */
+        margin-bottom: 10px;
+        width: 100%; /* Take full width within its screen section */
+        flex-basis: 100%; /* Ensure it occupies full row */
+        flex-grow: 0; /* Prevent it from expanding too much */
+    }
+
+    #question-text {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .options-grid {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* More compact options */
+        gap: 8px;
+        flex-grow: 1; /* Allow options to grow */
+        width: 100%;
+    }
+
+    .option-btn {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+
+    #motivation-message {
+        font-size: 0.9em;
+        margin-top: 5px;
+        min-height: 20px;
+        width: 100%;
+        flex-basis: 100%; /* Occupy full width at bottom */
+    }
+
+    #next-question-btn {
+        margin: 5px auto; /* Center button */
+        padding: 8px 18px;
+        font-size: 0.9em;
+    }
+
+    /* Adjust start/end screens for landscape */
+    #start-screen, #level-complete-screen, #game-over-screen {
+        flex-direction: row; /* Arrange buttons horizontally */
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px;
+        justify-content: center;
+        align-items: center;
+    }
+    #start-screen h1, #level-complete-screen h2, #game-over-screen h2 {
+        font-size: 2em; /* Smaller titles */
+        width: 100%; /* Take full width */
+        margin-bottom: 10px;
+    }
+    #start-screen p, #level-complete-screen p, #game-over-screen p {
+        font-size: 1em;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    #level-complete-screen button, #game-over-screen button, #start-screen button {
+        padding: 10px 20px;
+        font-size: 0.9em;
     }
 }
