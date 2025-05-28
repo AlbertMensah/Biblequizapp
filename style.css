@@ -8,40 +8,40 @@ body {
     margin: 0;
     background: linear-gradient(to bottom right, #A8E6CF, #D4EDDA, #FFE799); /* Softer, brighter gradient */
     color: #333;
-    -webkit-font-smoothing: antialiased; /* Smoother font rendering */
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden; /* Prevent body scroll if game wrapper manages its own overflow */
+    overflow: hidden; /* Control overflow at the body level */
 }
 
-/* Container for the whole game - now named .game-wrapper */
+/* Container for the whole game - .game-wrapper */
 .game-wrapper {
-    background-color: #FFFFFF; /* Pure white for clean contrast */
-    border-radius: 20px; /* Slightly less rounded than before */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Softer, more diffused shadow */
-    padding: 25px 35px; /* Adjusted padding */
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 25px 35px;
     text-align: center;
-    width: 95%; /* Take more width on smaller screens */
-    max-width: 650px; /* Slightly wider max-width */
+    width: 95%; /* More adaptive width */
+    max-width: 650px;
     box-sizing: border-box;
     position: relative;
-    overflow: hidden; /* Keep content within bounds */
+    overflow: hidden; /* Ensure content stays within the rounded border */
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Distribute space between sections */
+    flex-direction: column; /* Default to column for portrait */
+    justify-content: space-between;
     align-items: center;
-    height: 90vh; /* Use vh for better scaling on mobile */
+    height: 90vh; /* Responsive height */
     max-height: 850px;
-    border: 2px solid #F0B27A; /* Thinner, subtle border */
+    border: 2px solid #F0B27A;
     gap: 15px; /* Space between main sections */
 }
 
 /* Header Styles */
 h1 {
     font-family: 'Fredoka One', cursive;
-    color: #3498DB; /* Bright blue for title */
-    font-size: 2.8em; /* Adjusted size */
-    margin-bottom: 15px; /* Less margin */
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Softer shadow */
+    color: #3498DB;
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     letter-spacing: 1.5px;
 }
 
@@ -51,12 +51,12 @@ h1 {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    margin-bottom: 20px; /* Less margin below header */
+    margin-bottom: 20px;
     font-size: 1em;
     font-weight: bold;
     color: #555;
-    flex-wrap: wrap;
-    gap: 8px; /* Slightly smaller gap between items */
+    flex-wrap: wrap; /* Allow wrapping of indicators */
+    gap: 8px;
 }
 
 .game-header p {
@@ -65,46 +65,47 @@ h1 {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    font-size: 0.85em; /* Label text size */
-    flex-shrink: 0; /* Prevent shrinking on small screens */
+    font-size: 0.85em;
+    flex-shrink: 0;
+    min-width: 70px; /* Ensure labels have some space */
 }
 
 .header-indicator {
     font-family: 'Fredoka One', cursive;
-    font-size: 1.4em; /* Adjusted size */
+    font-size: 1.4em;
     font-weight: bold;
     color: white;
-    border-radius: 12px; /* Softer rounding */
-    padding: 6px 12px; /* Reduced padding */
+    border-radius: 12px;
+    padding: 6px 12px;
     margin-top: 4px;
     min-width: 55px;
     display: inline-block;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15), inset 0 0 5px rgba(255,255,255,0.3); /* Subtle outer and inner shadow */
-    border: 2px solid; /* Thinner border */
-    line-height: 1.2; /* Ensure number is centered vertically */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15), inset 0 0 5px rgba(255,255,255,0.3);
+    border: 2px solid;
+    line-height: 1.2;
 }
 
 /* Specific indicator colors */
 .level-indicator {
-    background-color: #F39C12; /* Bright Orange */
+    background-color: #F39C12;
     border-color: #E67E22;
 }
 .score-indicator {
-    background-color: #2ECC71; /* Emerald Green */
+    background-color: #2ECC71;
     border-color: #28B463;
 }
 .lives-indicator {
-    background-color: #E74C3C; /* Alizarin Red */
+    background-color: #E74C3C;
     border-color: #C0392B;
 }
 .timer-indicator {
-    background-color: #3498DB; /* Bright Blue */
+    background-color: #3498DB;
     border-color: #2980B9;
 }
 
 /* Timer low animation */
 .timer-indicator.low-time {
-    animation: pulse 1s infinite alternate; /* Added alternate */
+    animation: pulse 1s infinite alternate;
 }
 
 @keyframes pulse {
@@ -115,100 +116,102 @@ h1 {
 
 /* Question Box */
 .question-box {
-    background-color: #FFFFFF; /* White background for question */
-    border: 2px solid #F0B27A; /* Consistent border style */
-    border-radius: 18px; /* Softer rounding */
-    padding: 20px; /* Reduced padding for more vertical space */
-    margin-bottom: 15px; /* Space below question box */
-    min-height: 150px; /* Minimum height for stability */
+    background-color: #FFFFFF;
+    border: 2px solid #F0B27A;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 15px;
+    min-height: 150px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically center content */
+    justify-content: center;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Subtle lift */
-    flex-grow: 1; /* Allow it to grow and take available space */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    flex-grow: 1; /* Allows it to take available space */
 }
 
 #question-text {
-    font-size: 1.5em; /* Adjusted size */
+    font-size: 1.5em;
     font-weight: bold;
     color: #333;
-    margin-bottom: 20px; /* Consistent margin */
+    margin-bottom: 20px;
     text-align: center;
     line-height: 1.3;
-    word-wrap: break-word; /* Ensure long words break */
-    max-width: 100%; /* Ensure text stays within bounds */
+    word-wrap: break-word;
+    max-width: 100%;
 }
 
 .options-grid {
     display: grid;
-    /* Responsive Grid: as many columns as fit, each min 120px, max 1fr */
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 15px; /* Consistent gap */
+    /* More aggressive minmax for smaller screens */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
     width: 100%;
-    flex-grow: 1; /* Allow options to grow and fill space */
-    align-items: center; /* Center options vertically in their cells */
-    justify-content: center; /* Center options horizontally in their cells */
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
 }
 
 .option-btn {
-    background-color: #5DADE2; /* Vibrant blue for options */
+    background-color: #5DADE2;
     color: white;
-    padding: 15px 18px; /* Reduced padding for a less "chunky" feel */
+    padding: 15px 18px;
     border: none;
-    border-radius: 10px; /* Softer rounding */
-    font-size: 1.1em; /* Adjusted font size */
+    border-radius: 10px;
+    font-size: 1.1em;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 0 #2E86C1; /* Softer shadow for pressed effect */
+    box-shadow: 0 4px 0 #2E86C1;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-    line-height: 1.2; /* Ensure text is vertically centered */
-    white-space: normal; /* Allow text to wrap */
-    word-wrap: break-word; /* Break long words */
+    line-height: 1.2;
+    white-space: normal;
+    word-wrap: break-word;
 }
 
 .option-btn:hover {
-    background-color: #3498DB; /* Slightly darker on hover */
-    transform: translateY(-2px); /* Less lift */
+    background-color: #3498DB;
+    transform: translateY(-2px);
     box-shadow: 0 6px 0 #2874A6;
 }
 
 .option-btn:active {
-    background-color: #2E86C1; /* Even darker when clicked */
-    transform: translateY(2px); /* Less push down */
+    background-color: #2E86C1;
+    transform: translateY(2px);
     box-shadow: 0 1px 0 #21618C;
 }
 
 /* Feedback messages */
 #motivation-message {
-    font-size: 1.3em; /* Adjusted size */
+    font-size: 1.3em;
     font-weight: bold;
-    margin-top: 15px; /* Reduced margin */
-    min-height: 30px; /* Smaller reserved space */
+    margin-top: 15px;
+    min-height: 30px;
     color: #666;
     text-align: center;
     width: 100%;
     box-sizing: border-box;
+    flex-shrink: 0; /* Prevent message from shrinking */
 }
 
 /* General Buttons (Start, Next, Quit, Play Again) */
 button {
-    background-color: #28B463; /* Forest Green for general buttons */
+    background-color: #28B463;
     color: white;
-    padding: 12px 25px; /* Adjusted padding */
+    padding: 12px 25px;
     border: none;
-    border-radius: 8px; /* Softer rounding */
-    font-size: 1.1em; /* Adjusted font size */
+    border-radius: 8px;
+    font-size: 1.1em;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    margin: 10px; /* Reduced margin */
-    box-shadow: 0 4px 0 #1D8348; /* Softer shadow */
+    margin: 10px;
+    box-shadow: 0 4px 0 #1D8348;
     text-transform: uppercase;
     letter-spacing: 0.8px;
     font-weight: bold;
+    flex-shrink: 0; /* Prevent buttons from shrinking */
 }
 
 button:hover {
@@ -225,14 +228,14 @@ button:active {
 
 /* Specific button styles */
 .start-btn {
-    background-color: #F1C40F; /* Sunflower Yellow */
+    background-color: #F1C40F;
     box-shadow: 0 4px 0 #F39C12;
 }
 .start-btn:hover { background-color: #F4D03F; }
 .start-btn:active { background-color: #F39C12; box-shadow: 0 1px 0 #E67E22; }
 
 #next-question-btn {
-    background-color: #8E44AD; /* Amethyst Purple */
+    background-color: #8E44AD;
     box-shadow: 0 4px 0 #6C3483;
 }
 #next-question-btn:hover { background-color: #9B59B6; }
@@ -240,43 +243,44 @@ button:active {
 
 /* Correct/Wrong Feedback */
 .correct {
-    background-color: #2ECC71; /* Emerald Green */
+    background-color: #2ECC71;
     box-shadow: 0 4px 0 #28B463;
 }
 .wrong {
-    background-color: #E74C3C; /* Alizarin Red */
+    background-color: #E74C3C;
     box-shadow: 0 4px 0 #C0392B;
 }
 
 /* Screen Management */
 .screen {
-    position: absolute; /* Keeps screens stacked and controlled by JS */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.99); /* Almost opaque white */
+    background-color: rgba(255, 255, 255, 0.99);
     border-radius: 20px; /* Match wrapper */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Default to column */
     justify-content: center;
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
     z-index: 10;
-    gap: 15px; /* Consistent spacing between elements on screens */
+    gap: 15px;
+    overflow: auto; /* Allow screen content to scroll if it overflows */
 }
 
 .hidden {
-    display: none !important; /* Force hide */
+    display: none !important;
 }
 
 /* Game Over and Level Complete */
 #level-complete-screen h2, #game-over-screen h2 {
     font-family: 'Fredoka One', cursive;
-    font-size: 2.8em; /* Adjusted size */
+    font-size: 2.8em;
     margin-bottom: 20px;
-    color: #F1C40F; /* Sunflower Yellow */
+    color: #F1C40F;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -294,9 +298,9 @@ button:active {
 /* Mobile Portrait - General adjustments for smaller screens */
 @media (max-width: 768px) {
     .game-wrapper {
-        padding: 20px 20px;
+        padding: 15px 15px; /* Reduced padding for smaller screens */
         height: 95vh;
-        max-height: 900px; /* Prevent it from getting too tall on some phones */
+        max-height: 900px;
     }
 
     h1 {
@@ -312,6 +316,7 @@ button:active {
 
     .game-header p {
         font-size: 0.8em;
+        min-width: 60px; /* Adjust min-width for labels */
     }
 
     .header-indicator {
@@ -333,8 +338,7 @@ button:active {
 
     .options-grid {
         gap: 10px;
-        /* On very small screens, maybe force single column for options */
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Force single column on smaller phones in portrait */
     }
 
     .option-btn {
@@ -364,117 +368,186 @@ button:active {
     }
 }
 
-/* Mobile Landscape Specifics (adjust for horizontal orientation) */
+/* Mobile Landscape Specifics (phones & small tablets in landscape) */
 @media (max-height: 500px) and (orientation: landscape) {
     .game-wrapper {
-        flex-direction: row; /* Layout content horizontally */
-        flex-wrap: wrap; /* Allow wrapping if needed */
+        flex-direction: row; /* Arrange major sections horizontally */
+        flex-wrap: nowrap; /* Prevent wrapping unless explicitly desired */
         justify-content: space-around;
-        height: 98vh; /* Maximize vertical space in landscape */
-        width: 98vw; /* Maximize horizontal space */
-        padding: 15px;
-        max-width: unset; /* Remove max-width constraint */
-        min-height: unset; /* Remove min-height constraint */
-        gap: 10px; /* Smaller gap between main sections */
+        height: 98vh; /* Maximize vertical space available */
+        width: 98vw; /* Maximize horizontal space available */
+        padding: 10px; /* Reduce overall padding */
+        max-width: unset; /* Remove max-width for landscape */
+        min-height: unset; /* Allow height to shrink */
+        gap: 10px; /* Smaller gap between main horizontal sections */
+        overflow-y: auto; /* Allow vertical scrolling for the wrapper if content overflows */
     }
 
-    h1 {
-        font-size: 1.8em;
-        margin-bottom: 5px;
-        width: 100%; /* Take full width */
+    /* Adjust the main game screen to be a column within the wrapper */
+    #game-screen {
+        flex-direction: column; /* Content within game-screen is still a column */
+        justify-content: flex-start; /* Start content from the top */
+        align-items: center;
+        padding: 5px; /* Reduced internal padding */
+        gap: 5px; /* Smaller gap for elements within game screen */
+        width: 60%; /* Take up a significant portion of horizontal space */
+        height: 100%; /* Fill available height in the row */
+        overflow-y: auto; /* Allow scrolling for game-screen content */
     }
 
     .game-header {
-        flex-direction: column; /* Stack stats vertically */
+        flex-direction: row; /* Keep indicators in a row */
         justify-content: center;
-        width: 30%; /* Dedicate a column for stats */
-        margin-bottom: 0;
-        gap: 5px;
-        align-self: flex-start; /* Align to the top of its row */
+        gap: 5px; /* More compact */
+        margin-bottom: 5px;
+        width: 100%; /* Ensure it spans the width */
+        flex-wrap: nowrap; /* Try to keep them in one row */
     }
 
     .game-header p {
         font-size: 0.7em;
+        min-width: unset; /* Let content determine width */
     }
 
     .header-indicator {
-        font-size: 1em;
-        padding: 3px 8px;
-        min-width: 40px;
+        font-size: 0.9em; /* Smaller font for stats */
+        padding: 2px 5px; /* Even smaller padding */
+        min-width: 35px;
         margin-top: 2px;
-    }
-
-    .game-screen {
-        flex-direction: row; /* Arrange content side-by-side */
-        flex-wrap: wrap; /* Allow question and options to wrap */
-        justify-content: space-around;
-        align-items: flex-start; /* Align items to the top */
-        padding: 10px;
-        gap: 10px;
-        width: 65%; /* Take up remaining horizontal space */
     }
 
     .question-box {
         padding: 10px;
-        min-height: 80px; /* Reduced min-height */
-        margin-bottom: 10px;
-        width: 100%; /* Take full width within its screen section */
-        flex-basis: 100%; /* Ensure it occupies full row */
-        flex-grow: 0; /* Prevent it from expanding too much */
+        min-height: 70px; /* Significantly reduced min-height */
+        margin-bottom: 5px; /* Less margin */
+        flex-grow: 1; /* Allow it to grow, but less aggressively */
+        flex-basis: auto; /* Allow it to determine its own basis */
+        width: 100%; /* Ensure it still takes full width of its container */
     }
 
     #question-text {
-        font-size: 1em;
+        font-size: 1em; /* Smaller question text */
         margin-bottom: 10px;
     }
 
     .options-grid {
-        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* More compact options */
-        gap: 8px;
-        flex-grow: 1; /* Allow options to grow */
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Even smaller minimum for options */
+        gap: 5px; /* Reduced gap */
         width: 100%;
     }
 
     .option-btn {
-        padding: 8px 10px;
-        font-size: 0.9em;
+        padding: 8px 10px; /* Smaller option buttons */
+        font-size: 0.85em;
+        border-radius: 6px;
     }
 
     #motivation-message {
         font-size: 0.9em;
         margin-top: 5px;
-        min-height: 20px;
-        width: 100%;
-        flex-basis: 100%; /* Occupy full width at bottom */
+        min-height: 15px;
+        flex-shrink: 0;
     }
 
     #next-question-btn {
-        margin: 5px auto; /* Center button */
-        padding: 8px 18px;
+        padding: 6px 15px; /* Smaller next button */
         font-size: 0.9em;
+        margin: 5px auto;
+        flex-shrink: 0;
     }
 
     /* Adjust start/end screens for landscape */
     #start-screen, #level-complete-screen, #game-over-screen {
-        flex-direction: row; /* Arrange buttons horizontally */
-        flex-wrap: wrap;
-        gap: 10px;
-        padding: 15px;
+        flex-direction: column; /* Stack vertically for simpler landscape layout */
         justify-content: center;
-        align-items: center;
+        gap: 8px;
+        padding: 10px;
+        width: 40%; /* Take up a side column */
+        height: 100%; /* Fill available height */
+        position: static; /* Remove absolute positioning inside game-wrapper */
+        overflow-y: auto; /* Allow scrolling if content overflows */
     }
+
     #start-screen h1, #level-complete-screen h2, #game-over-screen h2 {
-        font-size: 2em; /* Smaller titles */
-        width: 100%; /* Take full width */
-        margin-bottom: 10px;
-    }
-    #start-screen p, #level-complete-screen p, #game-over-screen p {
-        font-size: 1em;
+        font-size: 1.8em;
+        margin-bottom: 8px;
         width: 100%;
-        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    #start-screen p, #level-complete-screen p, #game-over-screen p {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+        width: 100%;
     }
     #level-complete-screen button, #game-over-screen button, #start-screen button {
-        padding: 10px 20px;
+        padding: 8px 18px;
         font-size: 0.9em;
+        margin: 5px;
+    }
+
+    /* Special rule for game-wrapper when start/end screens are visible in landscape */
+    .game-wrapper:has(#start-screen:not(.hidden)),
+    .game-wrapper:has(#level-complete-screen:not(.hidden)),
+    .game-wrapper:has(#game-over-screen:not(.hidden)) {
+        flex-direction: column; /* Force back to column layout for these screens */
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        height: 90vh; /* Revert to portrait height */
+        max-width: 650px; /* Revert to portrait max-width */
+        width: 95%;
+    }
+
+    /* Adjust general buttons in landscape to allow for more space */
+    button {
+        flex-basis: auto; /* Let content determine width */
+        max-width: 100%; /* Prevent overflow */
+        margin: 5px;
+    }
+}
+
+
+/* General responsive adjustments (e.g. smaller fonts for all elements on very small screens) */
+@media (max-width: 400px) {
+    .game-wrapper {
+        padding: 10px;
+        gap: 10px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    .game-header p {
+        font-size: 0.7em;
+    }
+    .header-indicator {
+        font-size: 1em;
+        padding: 4px 8px;
+    }
+    #question-text {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+    .options-grid {
+        gap: 8px;
+    }
+    .option-btn {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+    #motivation-message {
+        font-size: 0.9em;
+        min-height: 20px;
+    }
+    button {
+        padding: 8px 18px;
+        font-size: 0.9em;
+        margin: 6px;
+    }
+    #level-complete-screen h2, #game-over-screen h2 {
+        font-size: 1.8em;
+    }
+    #level-complete-screen p, #game-over-screen p {
+        font-size: 1em;
     }
 }
