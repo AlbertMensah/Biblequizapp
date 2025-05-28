@@ -18,12 +18,12 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     padding: 30px 40px;
     text-align: center;
-    width: 90%;
+    width: 100%;
     max-width: 650px; /* Slightly wider max-width for better content display */
     box-sizing: border-box;
     position: relative; /* For absolute positioning of screens */
     overflow: hidden; /* Ensures screens don't overflow */
-    min-height: 550px; /* Ensure a minimum height for consistent layout */
+    min-height: 600px; /* Ensure a minimum height for consistent layout */
     display: flex; /* Use flexbox for container content */
     flex-direction: column; /* Stack header, main, and screens vertically */
     justify-content: space-between; /* Distribute space */
