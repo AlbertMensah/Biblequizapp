@@ -1,53 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ghana History Quiz</title>
-  <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ghana History Quiz</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Start Screen -->
-  <div id="start-screen" class="screen">
-    <h1>Ghana History Quiz</h1>
-    <p>Select Difficulty:</p>
-    <button id="start-normal-btn">Normal</button>
-    <button id="start-difficult-btn">Difficult</button>
-  </div>
+    <div class="game-wrapper">
 
-  <!-- Game Screen -->
-  <div id="game-screen" class="screen hidden">
-    <div class="game-header">
-      <p>Level: <span id="current-level">1</span></p>
-      <p>Score: <span id="current-score">0</span></p>
-      <p>Lives: <span id="current-lives">5</span></p>
-      <p>Time Left: <span id="countdown-timer">15</span> sec</p>
-    </div>
-    <div class="question-box">
-      <p id="question-text"></p>
-      <div id="options-container" class="options"></div>
-    </div>
-    <p id="motivation-message" class="message"></p>
-    <button id="next-question-btn" class="hidden">Next Question</button>
-  </div>
+        <div id="start-screen" class="screen">
+            <h1>Ghana History Quiz</h1>
+            <p>Select Difficulty:</p>
+            <button id="start-normal-btn" class="start-btn">Normal</button>
+            <button id="start-difficult-btn" class="start-btn">Difficult</button>
+        </div>
 
-  <!-- Level Complete Screen -->
-  <div id="level-complete-screen" class="screen hidden">
-    <h2>Level <span id="completed-level"></span> Complete!</h2>
-    <button id="next-level-btn">Next Level</button>
-    <button id="quit-game-btn">Quit</button>
-  </div>
+        <div id="game-screen" class="screen hidden">
+            <div class="game-header">
+                <p>Level: <span id="current-level">1</span></p>
+                <p>Score: <span id="current-score">0</span></p>
+                <p>Lives: <span id="current-lives">5</span></p>
+                <p>Time Left: <span id="countdown-timer">15</span> sec</p>
+            </div>
+            <div class="question-box">
+                <p id="question-text"></p>
+                <div id="options-container" class="options-grid"></div>
+            </div>
+            <p id="motivation-message" class="message"></p>
+            <button id="next-question-btn" class="hidden">Next Question</button>
+        </div>
 
-  <!-- Game Over Screen -->
-  <div id="game-over-screen" class="screen hidden">
-    <h2>Game Over</h2>
-    <p id="game-over-message"></p>
-    <button id="play-again-btn">Play Again</button>
-    <button id="home-screen-btn">Home</button>
-  </div>
+        <div id="level-complete-screen" class="screen hidden">
+            <h2>Level <span id="completed-level"></span> Complete!</h2>
+            <button id="next-level-btn">Next Level</button>
+            <button id="quit-game-btn">Quit</button>
+        </div>
 
-  <script src="questions.js"></script>
-  <script src="script.js"></script>
+        <div id="game-over-screen" class="screen hidden">
+            <h2>Game Over</h2>
+            <p id="game-over-message"></p>
+            <button id="play-again-btn">Play Again</button>
+            <button id="home-screen-btn">Home</button>
+        </div>
+
+    </div> <script src="questions.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
